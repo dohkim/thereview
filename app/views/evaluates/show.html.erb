@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @evaluate.rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @evaluate.comment %>
+</p>
+
+<%= link_to 'Edit', edit_evaluate_path(@evaluate) %> |
+<%= link_to 'Back', evaluates_path %>

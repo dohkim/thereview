@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Evaluates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rating</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @evaluates.each do |evaluate| %>
+      <tr>
+        <td><%= evaluate.rating %></td>
+        <td><%= evaluate.comment %></td>
+        <td><%= link_to 'Show', evaluate %></td>
+        <td><%= link_to 'Edit', edit_evaluate_path(evaluate) %></td>
+        <td><%= link_to 'Destroy', evaluate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Evaluate', new_evaluate_path %>
