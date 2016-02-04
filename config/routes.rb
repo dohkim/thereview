@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :evaluates
-  resources :reviews
+  resources :reviews do
+    resources :evaluates, except: [:show, :index]
+  end
   resources :tags
   
+
   devise_for :users
 
 

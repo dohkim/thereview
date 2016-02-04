@@ -27,7 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Devise Gem
 gem 'devise'
 
-# 
+# Jquery raty
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

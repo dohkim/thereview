@@ -1,4 +1,4 @@
-<%= form_for(@evaluate) do |f| %>
+<%= form_for([@review, @evaluate]) do |f| %>
   <% if @evaluate.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@evaluate.errors.count, "error") %> prohibited this evaluate from being saved:</h2>
@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.number_field :rating %>
-  </div>
+  <div id="star-rating"></div>
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
@@ -23,3 +20,12 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script>
+  $('#star-rating').raty({
+     path: '/assets',
+     scoreName: 'evaluate[rating]'
+  });
+  
+</script>

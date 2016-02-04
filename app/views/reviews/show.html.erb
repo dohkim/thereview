@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+리뷰 평점 : <div class="star-rating" data-score=<%=@avg_rating %> ></div>
+<p><%= "#{@evaluates.length} 명이 평가 했습니다." %></p>
+
 <p>
   <strong>Restaurant:</strong>
   <%= @review.restaurant %>
@@ -15,6 +18,31 @@
   <strong>Content:</strong>
   <%= @review.content %>
 </p>
+<%= link_to "평가하기", new_review_evaluate_path(@review), class: "btn btn-primary" %>
+<div class>
+    <% if @evaluates.blank? %>
+      <h3>평가가 없습니다. 리뷰에 대한 평가를 해주세요</h3>
+    <% else %>
+      <% @evaluates.each do |evaluate| %>
+        <div class="star-rating" data-score= <%= evaluate.rating %> ></div>
+        <p><%= h(evaluate.comment).gsub(/\n/, '<br/>').html_safe %></p>
+      <% end %>
+    <% end %>
+  </div>
+<%= link_to 'Edit', edit_review_path(@review), class: "btn btn-link" %> |
+<%= link_to 'Back', reviews_path, class: "btn btn-link" %>
 
-<%= link_to 'Edit', edit_review_path(@review) %> |
-<%= link_to 'Back', reviews_path %>
+
+
+
+
+
+<script>
+  $('.star-rating').raty({    
+    readOnly: true,
+    path: '/assets',
+    score: function() {
+      return $(this).attr('data-score');
+    }
+  });
+</script>

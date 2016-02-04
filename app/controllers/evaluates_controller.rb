@@ -1,6 +1,12 @@
 class EvaluatesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_evaluate, only: [:show, :edit, :update, :destroy]
+  before_action :set_review
 
+
+  def set_review
+    @review=Review.find(params[:review_id])
+  end
   # GET /evaluates
   # GET /evaluates.json
   def index
@@ -9,7 +15,7 @@ class EvaluatesController < ApplicationController
 
   # GET /evaluates/1
   # GET /evaluates/1.json
-  def show
+  def show    
   end
 
   # GET /evaluates/new
@@ -25,10 +31,12 @@ class EvaluatesController < ApplicationController
   # POST /evaluates.json
   def create
     @evaluate = Evaluate.new(evaluate_params)
+    @evaluate.user_id= current_user.id
+    @evaluate.review_id = @review.id
 
     respond_to do |format|
       if @evaluate.save
-        format.html { redirect_to @evaluate, notice: 'Evaluate was successfully created.' }
+        format.html { redirect_to @review, notice: 'Evaluate was successfully created.' }
         format.json { render :show, status: :created, location: @evaluate }
       else
         format.html { render :new }

@@ -9,7 +9,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1
   # GET /reviews/1.json
-  def show
+  def show    
+    @evaluates = Evaluate.where(review_id: @review.id).order("created_at DESC")
+    @avg_rating = @evaluates.average(:rating).round(2)
   end
 
   # GET /reviews/new
