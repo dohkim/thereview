@@ -2,13 +2,15 @@
 
 The reivew is that user review the another user's review.
 
+So review system provides people to make better decision. (no scam because it is all user's review)
+
 features
 --------
-* Users are able to review product or restaurant
-
-* Users also are able to review user's review
+- Users are able to review product or restaurant.
+- Rating system will be 1 - 5 stars.
+- Users also are able to review user's review.
 
 demos
 -----
-It will be coming w heroku app.
+- It will be coming w heroku app.
 
